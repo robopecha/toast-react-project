@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Button from '../Button';
-import Toast from '../Toast';
+import ToastShelf from '../ToastShelf';
 
 import styles from './ToastPlayground.module.css';
 
@@ -12,6 +12,13 @@ function ToastPlayground() {
   const [variant, setVariant] = React.useState('notice');
   const [visible, setVisible] = React.useState(false);
 
+  const handleSubmit = event => {
+    event.preventDefault();
+    // add to toast array
+    // setMessage('');
+    setVisible(true);
+  }
+
   const handleDismiss = () => setVisible(false);
 
   return (
@@ -21,8 +28,9 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      {visible && <Toast message={message} variant={variant} handleDismiss={handleDismiss} />}
-      <form onSubmit={event => event.preventDefault()} className={styles.controlsWrapper}>
+      {visible && <ToastShelf message={message} variant={variant} handleDismiss={handleDismiss} />}
+
+      <form onSubmit={handleSubmit} className={styles.controlsWrapper}>
         <div className={styles.row}>
           <label
             htmlFor="message"
@@ -67,7 +75,7 @@ function ToastPlayground() {
           <div
             className={`${styles.inputWrapper} ${styles.radioWrapper}`}
           >
-            <Button onClick={() => setVisible(true)}>Pop Toast!</Button>
+            <Button>Pop Toast!</Button>
           </div>
         </div>
       </form>
