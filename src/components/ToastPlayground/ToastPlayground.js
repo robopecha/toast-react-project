@@ -9,7 +9,7 @@ import styles from './ToastPlayground.module.css';
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 
 function ToastPlayground() {
-
+  const {message, setMessage, variant, setVariant, toasts, handleSubmit, handleDismiss} = React.useContext(ToastContext);
 
 
   return (
